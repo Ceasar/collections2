@@ -28,13 +28,12 @@ def divide(list_, k):
     """
     Slice a list into pieces of length-k.
 
-    >>> items = range(1, 7)
-    >>> list(divide(items, 2))
-    [[1, 2], [3, 4], [5, 6]]
-
+    >>> list(divide([1, 2, 3, 4, 5, 6], 2))
+    [(1, 2), (3, 4), (5, 6)]
+    >>> list(divide([1, 2, 3, 4, 5, 6, 7], 2))
+    [(1, 2), (3, 4), (5, 6)]
     """
-    for i in range(0, len(list_), k):
-        yield list_[i:i+k]
+    return izip(*[iter(list_)] * k)
 
 
 def enumerate2(iterable, reverse_counts=False, reverse_values=False):
